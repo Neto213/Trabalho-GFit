@@ -1,0 +1,2 @@
+# Previne acesso direto via navegador
+Deny from all

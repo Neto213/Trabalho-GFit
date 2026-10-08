@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Bloquear acesso a pastas privadas e arquivos sensíveis se a raiz do Apache apontar para a pasta raiz do projeto
+    RewriteRule ^(\.env|\.git|\.vscode|composer\.(json|lock|phar)|app|config|database|scripts|storage|tests|vendor|test_db\.php) - [F,L,NC]
+
+    # Redirecionar tudo para public/ caso a requisição acerte a raiz
+    RewriteRule ^$ public/ [L]
+    RewriteRule (.*) public/$1 [L]
+</IfModule>
+
+Options -Indexes
+
+<FilesMatch "(?i)^(\.env|\.gitignore|composer\.(json|lock|phar)|.*\.(sql|log|ini|bak|dist))$">
+    Require all denied
+</FilesMatch>

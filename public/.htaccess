@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirecionar para index.php se o arquivo ou diretório físico não existir
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# Desabilitar listagem de diretório
+Options -Indexes
+
+# Bloquear acesso direto a arquivos ocultos (.env, etc.)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(?i).*\.(php~|bak|dist|ini|log|sql)$">
+    Require all denied
+</FilesMatch>

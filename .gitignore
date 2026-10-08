@@ -1,0 +1,16 @@
+# Git Ignore para Gestão de Academia
+.env
+storage/logs/*
+!storage/logs/.gitkeep
+storage/mail/*
+!storage/mail/.gitkeep
+vendor/
+!public/assets/vendor/
+!public/assets/vendor/**
+.DS_Store
+Thumbs.db
+*.bak
+*.log
+database/*_completo.sql
+storage/sessions/*
+.composer-cache/
